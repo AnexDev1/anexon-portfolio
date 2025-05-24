@@ -1,0 +1,152 @@
+.app-icon-container {
+    border-radius: 10px;
+    padding: 10px; /* Reduced default padding from 20px */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    /* Default background and shadow are now applied conditionally or removed by --no-background */
+    /* Add them back here if you want a default white bg for non-noBackground instances */
+    margin: 10px; /* Retain default margin between icons */
+  }
+  
+  .app-icon-container:hover {
+    transform: translateY(-3px);
+  }
+  
+  .app-icon-container__image-wrapper {
+    position: relative; /* For positioning notification on the image */
+    display: inline-block; /* Ensures wrapper fits its content */
+  }
+  
+  /* This class gives the image's direct wrapper a white, rounded background */
+  .app-icon-container__image-wrapper--card-effect {
+    background-color: #ffffff; /* White background specifically for the image area */
+    border-radius: 8px;        /* Rounded corners for this image background */
+    padding: 5px;              /* Padding around the image to create the background effect */
+ 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: a subtle shadow for this image card */
+    display: inline-flex;      /* Ensures it wraps the image tightly */
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Adjust image style if it's inside the card effect wrapper */
+  .app-icon-container__image-wrapper--card-effect .app-icon-container__image {
+    border-radius: 4px; /* Optional: if the image itself should have slightly rounded corners inside its card */
+  }
+  
+  .app-icon-container__image {
+    width: 60px; /* Default image size */
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px; /* Default rounded corners for the image if not in card-effect */
+    display: block;
+  }
+  
+  .app-icon-container__label {
+    font-size: 0.8em; /* Reduced default font size from 0.85em */
+    color: #333; /* Default label color, for when container has white background */
+    margin-top: 4px; /* Reduced default margin-top from 8px */
+    margin-bottom: 0;
+    line-height: 1.2; /* Added for better control */
+  }
+  
+  .app-icon-container__notification-indicator {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    transform: translate(40%, -40%); /* Adjust for positioning on image corner */
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+ 
+    min-width: 20px;
+    height: 20px;
+    padding: 0 5px;
+    font-size: 0.7em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    line-height: 20px;
+    z-index: 1;
+  }
+  
+  /* Styles for when the main AppIconContainer should have no background (transparent) */
+  /* This is applied if noBackground={true} OR showImageOnly={true} */
+  .app-icon-container--no-background {
+    background-color: transparent; /* Main container becomes transparent */
+    box-shadow: none;              /* No shadow for the main container */
+    /* padding: 5px; */ /* Padding is now 10px by default, this could be more specific if needed */
+  }
+  
+  /* Label style when the main container is transparent (noBackground or showImageOnly) */
+  /* This ensures label is readable against the app's actual background */
+  .app-icon-container--no-background .app-icon-container__label {
+    color: #f0f0f0; /* Light color for label text, assuming app background is darker */
+    /* text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.7); */ /* Optional for readability */
+  }
+  
+  /* The .app-icon-container--show-image-only class is applied to the main container */
+  /* when showImageOnly is true. It primarily ensures the label and notification are hidden via JS. */
+  /* The visual "card effect" for the image in this mode comes from */
+  /* .app-icon-container__image-wrapper--card-effect being applied to the image wrapper. */
+
+  .bottom-bar {
+    background-color: rgba(44, 62, 80, 0.85); /* Dark, slightly transparent background */
+    backdrop-filter: blur(10px); /* iOS-like blur effect */
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    padding: 8px 0; /* Vertical padding */
+    width: 100%;    /* Span full width */
+    height: 70px;   /* Fixed height for the bar */
+    position: fixed;/* Stick to the bottom of the viewport */
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-around; /* Distribute icons evenly */
+    align-items: center;          /* Vertically center icons */
+    z-index: 1000; /* Ensure it's above other content */
+  }
+  
+  /* Adjust AppIconContainer when inside the bottom-bar */
+  .bottom-bar .app-icon-container {
+    background-color: transparent !important; /* Override default AppIconContainer background */
+    box-shadow: none !important;             /* Override default AppIconContainer shadow */
+    padding: 5px !important;                 /* More compact padding */
+    margin: 0 5px !important;                /* Spacing between icons in the bar */
+    /* width: auto; */                       /* Let content define width, or set a fixed one if preferred */
+    /* height: 100%; */                     /* If you want icons to try and fill bar height */
+    justify-content: center;                 /* Ensure content is centered */
+  }
+  
+  /* Adjust the image wrapper within AppIconContainer when in bottom-bar */
+  /* This removes the 'card-effect' white background from images in the bottom bar */
+  .bottom-bar .app-icon-container__image-wrapper--card-effect {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important; /* Remove padding if no card effect */
+  }
+  
+  /* Adjust image size within AppIconContainer when in bottom-bar */
+  .bottom-bar .app-icon-container__image {
+    width: 42px !important;  /* Smaller icons for the bottom bar */
+    height: 42px !important;
+    margin-bottom: 4px !important; /* Reduced space between icon and label */
+  }
+  
+  /* Adjust label style within AppIconContainer when in bottom-bar */
+  .bottom-bar .app-icon-container__label {
+    font-size: 0.65em !important; /* Smaller labels */
+    color: #000000 !important;    /* Light color for text on dark background */
+    margin-top: 2px !important;   /* Adjust top margin for label */
+    line-height: 1.1 !important;
+  }
+  
+  /* Hide notifications if any were to appear on bottom bar icons by default */
+  .bottom-bar .app-icon-container__notification-indicator {
+    display: none !important;
+  }

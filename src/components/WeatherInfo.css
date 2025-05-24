@@ -1,0 +1,98 @@
+.weather-container {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px auto;
+    width: 90%; /* Adjusted for potentially wider content */
+    max-width: 450px; /* Adjusted for potentially wider content */
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #333;
+  }
+  
+  .weather-main-content {
+    display: flex;
+    justify-content: space-between; /* Pushes left and right apart */
+    align-items: flex-start; /* Align items to the top */
+  }
+  
+  /* Left Side Styling */
+  .weather-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items like icon and temps */
+    padding-right: 20px; /* Space between left and right sections */
+    text-align: center;
+  }
+  
+  .main-icon {
+    font-size: 3em; /* Adjust size as needed */
+    margin-bottom: 5px;
+    color: #ffcc00; /* Example sun color */
+  }
+  
+  .current-temp {
+    font-size: 2.5em;
+    font-weight: bold;
+    line-height: 1;
+    color: #2c3e50;
+  }
+  
+  .temp-range {
+    font-size: 0.9em;
+    color: #555;
+  }
+  
+  /* Right Side Styling */
+  .weather-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align text to the start (left) */
+    text-align: left;
+  }
+  
+  .city-name {
+    font-size: 1.6em;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 2px;
+  }
+  
+  .weather-description {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+  }
+  
+  .forecast-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 10px; /* Space between forecast items */
+    width: 100%;
+  }
+  
+  .forecast-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.3); /* Slight background for items */
+    border-radius: 8px;
+    padding: 8px 5px;
+    font-size: 0.8em;
+  }
+  
+  .forecast-degree-top,
+  .forecast-degree-bottom {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .forecast-icon {
+    font-size: 1.5em; /* Adjust icon size */
+    margin: 4px 0;
+    color: #ffcc00; /* Example sun color */
+  }

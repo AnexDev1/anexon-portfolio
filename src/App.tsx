@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import WeatherInfo from './components/WeatherInfo';
 import AppIconContainer from './components/AppIconContainer';
 import ProjectsPage from './components/ProjectsPage';

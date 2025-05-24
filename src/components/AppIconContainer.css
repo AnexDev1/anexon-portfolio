@@ -9,7 +9,6 @@
     transition: transform 0.2s ease-in-out;
     /* Default background and shadow are now applied conditionally or removed by --no-background */
     /* Add them back here if you want a default white bg for non-noBackground instances */
-    margin: 10px; /* Retain default margin between icons */
   }
   
   .app-icon-container:hover {
@@ -23,11 +22,9 @@
   
   /* This class gives the image's direct wrapper a white, rounded background */
   .app-icon-container__image-wrapper--card-effect {
-    background-color: #ffffff; /* White background specifically for the image area */
     border-radius: 8px;        /* Rounded corners for this image background */
     padding: 5px;              /* Padding around the image to create the background effect */
  
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: a subtle shadow for this image card */
     display: inline-flex;      /* Ensures it wraps the image tightly */
     align-items: center;
     justify-content: center;

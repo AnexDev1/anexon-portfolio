@@ -2,9 +2,10 @@ import { useState } from 'react';
 import WeatherInfo from './components/WeatherInfo';
 import AppIconContainer from './components/AppIconContainer';
 import ProjectsPage from './components/ProjectsPage';
+import ContactPage from './components/ContactPage';
 import './App.css';
 
-type Page = 'home' | 'projects';
+type Page = 'home' | 'projects' | 'contacts';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
@@ -32,17 +33,13 @@ function App() {
     setCurrentPage('home');
   };
 
+  const handleNavigateToContacts = () => {
+    setCurrentPage('contacts');
+  };
+
   const renderHomePage = () => (
     <>
-      <WeatherInfo
-        city={'Addis Ababa'}
-        currentTemperature={17}
-        description={'Sunny'}
-        mainWeatherIcon={sunnyIcon}
-        highTemperature={27}
-        lowTemperature={14}
-        forecastItems={sampleForecastItems}
-      />
+      <WeatherInfo />
       <div className="app-icons-grid">
         <AppIconContainer
           imageUrl="https://logowik.com/content/uploads/images/flutter5786.jpg" 
@@ -54,12 +51,19 @@ function App() {
         <AppIconContainer
           imageUrl="https://m.media-amazon.com/images/I/41Wt+LyfovL.png" // Dart icon
           label="Resume"
+          onClick={() => {
+            const link = document.createElement('a');
+            link.href = '/src/assets/pdf/resume.pdf';
+            link.download = 'resume.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          }}
         />
         <AppIconContainer
           imageUrl="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" 
           label="GitHub"
           notificationText="99+" // Example notification
-
           onClick={handleNavigateToGitHub}
         />
         <AppIconContainer
@@ -79,13 +83,15 @@ function App() {
     <div className="app">
       {currentPage === 'home' && renderHomePage()}
       {currentPage === 'projects' && <ProjectsPage onNavigateHome={handleNavigateHome} />}
-      
+      {currentPage === 'contacts' && <ContactPage />}
       {currentPage === 'home' && (
         <div className="bottom-bar">
           <AppIconContainer
             imageUrl="https://img.icons8.com/ios_filled/512/40C057/apple-phone.png" // Corrected: Phone icon
             label="Phone" // Corrected: Label "Phone"
-            onClick={handleNavigateHome}
+            onClick={() => {
+              window.open('tel:+251917413622');
+            }}
           />
           <AppIconContainer
             imageUrl="https://logos-world.net/wp-content/uploads/2020/09/Chrome-Logo.png"
@@ -95,12 +101,14 @@ function App() {
           <AppIconContainer
             imageUrl="https://static.vecteezy.com/system/resources/previews/020/964/377/non_2x/gmail-mail-icon-for-web-design-free-png.png"
             label="Gmail"
-            // onClick={() => alert('Gmail clicked!')}
+            onClick={() => {
+              window.open('mailto:anwarnasir0970@gmail.com');
+            }}
           />
           <AppIconContainer
             imageUrl="https://upload.wikimedia.org/wikipedia/commons/b/b7/Google_Contacts_logo.png"
             label="Contacts"
-            // onClick={() => alert('Contacts clicked!')}
+            onClick={() => setCurrentPage('contacts')}
           />
         </div>
       )}

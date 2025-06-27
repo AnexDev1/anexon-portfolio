@@ -5,16 +5,27 @@ body, html {
   font-family: Arial, sans-serif; /* Or your preferred font */
 }
 
+/* Force mobile-first layout for all screen sizes */
+html, body, #root, .app {
+  width: 100vw;
+  min-height: 100vh;
+  max-width: 430px; /* typical mobile max width */
+  margin: 0 auto;
+  background: #f5f6fa;
+  overflow-x: hidden;
+}
+
 .app {
-  min-height: 100vh; /* Ensure it covers the full viewport height */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
   /* Replace with your desired image URL */
   background-image: url('https://images.unsplash.com/photo-1554147090-e1221a04a025?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Example mobile wallpaper */
   background-size: cover; /* Cover the entire area */
   background-position: center; /* Center the image */
   background-repeat: no-repeat;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center content horizontally */
   padding-top: 20px; /* Add some padding at the top */
 }
 .container {
@@ -38,11 +49,9 @@ body, html {
 
 .app-icons-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); /* Responsive grid */
-  flex-wrap: wrap; /* Allow icons to wrap to the next line */
-  justify-content: center; /* Center icons horizontally */
-  gap: 15px; /* Space between icons */
-  padding: 15px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+  padding: 1.2rem 0.5rem;
   width: 100%;
   max-width: 400px; /* Adjust as needed */
 }
@@ -61,7 +70,8 @@ body, html {
   background-color: transparent; /* A dark, blackish-blue color */
   /* Or use a darker black: background-color: #1a1a1a; */
   padding: 10px 0; /* Vertical padding, no horizontal as it spans full width */
-  width: 100%;
+  width: 100vw;
+  max-width: 430px;
   height: 70px; /* Span full width */
   position: fixed; /* Stick to the bottom */
   bottom: 0;
@@ -69,6 +79,8 @@ body, html {
   display: flex;
   justify-content: space-around; /* Distribute icons evenly */
   align-items: center;
+  z-index: 100;
+  box-shadow: 0 -2px 16px rgba(0,0,0,0.08);
 }
 
 /* Optional: Adjust AppIconContainer when inside the bottom-bar if needed */
@@ -96,4 +108,18 @@ body, html {
   color: #ecf0f1; /* Light color for text on dark background */
   line-height: 1.1; /* Adjust for tight vertical spacing */
   margin-top: 0; /* Ensure no extra top margin on the label */
+}
+
+@media (min-width: 431px) {
+  html, body, #root, .app {
+    width: 430px !important;
+    min-width: 430px !important;
+    max-width: 430px !important;
+    margin: 0 auto !important;
+    box-shadow: 0 0 24px rgba(0,0,0,0.08);
+  }
+  .bottom-bar {
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }

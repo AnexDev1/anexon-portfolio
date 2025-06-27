@@ -10,17 +10,6 @@ type Page = 'home' | 'projects' | 'contacts';
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
 
-  const sunnyIcon = "☀️";
-  const partlyCloudyIcon = "🌤️";
-  const cloudyIcon = "🌥️";
-
-  const sampleForecastItems = [
-    { id: 1, topDegree: 20, icon: sunnyIcon, bottomDegree: 15 },
-    { id: 2, topDegree: 22, icon: partlyCloudyIcon, bottomDegree: 16 },
-    { id: 3, topDegree: 21, icon: sunnyIcon, bottomDegree: 17 },
-    { id: 4, topDegree: 19, icon: cloudyIcon, bottomDegree: 14 },
-  ];
-
   const handleNavigateToProjects = () => {
     setCurrentPage('projects');
   };
@@ -31,10 +20,6 @@ function App() {
 
   const handleNavigateHome = () => {
     setCurrentPage('home');
-  };
-
-  const handleNavigateToContacts = () => {
-    setCurrentPage('contacts');
   };
 
   const renderHomePage = () => (

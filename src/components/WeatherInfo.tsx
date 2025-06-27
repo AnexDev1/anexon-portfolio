@@ -29,7 +29,7 @@ const WeatherInfo: React.FC = () => {
           setLoading(false);
         }
       },
-      (err) => {
+      () => {
         setError('Location permission denied.');
         setLoading(false);
       }

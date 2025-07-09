@@ -74,7 +74,7 @@ function App() {
           label="Telegram"
           notificationText="New"
           noBackground={true}
-          onClick={() => window.open('https://t.me/anexdev', '_blank', 'noopener,noreferrer')}
+          onClick={() => window.open('https://t.me/anexon_iv', '_blank', 'noopener,noreferrer')}
         />
         <AppIconContainer
           imageUrl="https://pngdownload.io/wp-content/uploads/2023/12/X-Logo-Twitter-Logo-Iconic-Social-Media-Brand-Symbol-PNG-Transparent-Recognizable-Emblem-jpg.webp"

@@ -80,7 +80,7 @@ function App() {
           imageUrl="https://pngdownload.io/wp-content/uploads/2023/12/X-Logo-Twitter-Logo-Iconic-Social-Media-Brand-Symbol-PNG-Transparent-Recognizable-Emblem-jpg.webp"
           label="X (Twitter)"
           noBackground={true}
-          onClick={() => window.open('https://twitter.com/anexdev', '_blank', 'noopener,noreferrer')}
+          onClick={() => window.open('https://x.com/n3x0dev?t=uTLQwvhZ9chE1SqY8twyGw&s=09', '_blank', 'noopener,noreferrer')}
         />
         <AppIconContainer
           imageUrl="https://cdn-icons-png.flaticon.com/512/5968/5968764.png"

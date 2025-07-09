@@ -1,21 +1,77 @@
 .weather-container {
     background: rgba(255, 255, 255, 0.2);
-    border-radius: 15px;
-    padding: 20px;
-    margin: 20px auto;
-    width: 90%; /* Adjusted for potentially wider content */
-    max-width: 450px; /* Adjusted for potentially wider content */
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border-radius: 20px;
+    padding: 16px 16px 12px 16px;
+    margin: 18px auto 10px auto;
+    width: 95%;
+    max-width: 420px;
+    box-shadow: 0 8px 28px 0 rgba(31, 38, 135, 0.18);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    color: #333;
-  }
+    border: 1.5px solid rgba(255, 255, 255, 0.22);
+    color: #222;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    min-height: 90px;
+}
+
+.weather-awesome-bg::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    left: -60px;
+    width: 180px;
+    height: 180px;
+    background: radial-gradient(circle at 60% 40%, #ffe066 60%, #fffbe6 100%);
+    opacity: 0.5;
+    z-index: 0;
+    border-radius: 50%;
+}
+
+.weather-awesome-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 18px;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.weather-awesome-icon {
+    width: 48px;
+    height: 48px;
+    filter: drop-shadow(0 2px 8px #ffe06688);
+    margin-right: 2px;
+}
+.spin-slow {
+    animation: spin 8s linear infinite;
+}
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+.cloud-float {
+    position: absolute;
+    left: 60px;
+    top: 10px;
+    width: 38px;
+    height: 38px;
+    opacity: 0.85;
+    animation: cloudFloat 5s ease-in-out infinite alternate;
+}
+@keyframes cloudFloat {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(12px); }
+}
   
   .weather-main-content {
     display: flex;
-    justify-content: space-between; /* Pushes left and right apart */
-    align-items: flex-start; /* Align items to the top */
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    z-index: 2;
+    min-height: 60px;
   }
   
   /* Left Side Styling */

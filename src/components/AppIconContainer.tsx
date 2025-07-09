@@ -10,7 +10,7 @@ interface AppIconContainerProps {
   imageWidth?: string | number;
   imageHeight?: string | number;
   noBackground?: boolean;
-  onClick?: () => void; // New optional onClick prop
+  onClick?: () => void;
 }
 
 const AppIconContainer: React.FC<AppIconContainerProps> = ({
@@ -22,33 +22,22 @@ const AppIconContainer: React.FC<AppIconContainerProps> = ({
   imageWidth,
   imageHeight,
   noBackground = false,
-  onClick, // Destructure onClick
+  onClick,
 }) => {
   const imageStyle: React.CSSProperties = {};
-  if (imageWidth) {
-    imageStyle.width = imageWidth;
-  }
-  if (imageHeight) {
-    imageStyle.height = imageHeight;
-  }
+  if (imageWidth) imageStyle.width = imageWidth;
+  if (imageHeight) imageStyle.height = imageHeight;
 
   const baseClassName = "app-icon-container";
   const containerClasses = [baseClassName];
-
-  if (noBackground || showImageOnly) {
-    containerClasses.push(`${baseClassName}--no-background`);
-  }
-  if (showImageOnly) {
-    containerClasses.push(`${baseClassName}--show-image-only`);
-  }
+  if (noBackground || showImageOnly) containerClasses.push(`${baseClassName}--no-background`);
+  if (showImageOnly) containerClasses.push(`${baseClassName}--show-image-only`);
 
   const imageWrapperClasses = [`${baseClassName}__image-wrapper`];
-  if (noBackground || showImageOnly) {
-    imageWrapperClasses.push(`${baseClassName}__image-wrapper--card-effect`);
-  }
+  if (noBackground || showImageOnly) imageWrapperClasses.push(`${baseClassName}__image-wrapper--card-effect`);
 
   return (
-    <div className={containerClasses.join(' ')} onClick={onClick}> {/* Attach onClick here */}
+    <div className={containerClasses.join(' ')} onClick={onClick}>
       <div className={imageWrapperClasses.join(' ')}>
         <img
           src={imageUrl}

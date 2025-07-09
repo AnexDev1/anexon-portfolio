@@ -5,7 +5,7 @@ function ContactPage() {
     <div className="contact-page">
       <div className="contact-card">
         <img
-          src="https://avatars.githubusercontent.com/u/your-github-id" // Replace with your avatar or logo
+          src="https://avatars.githubusercontent.com/u/your-github-id"
           alt="Profile"
           className="contact-avatar"
         />

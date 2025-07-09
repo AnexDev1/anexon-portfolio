@@ -1,4 +1,5 @@
-import { useState } from 'react';
+
+import { useEffect, useState } from 'react';
 import WeatherInfo from './components/WeatherInfo';
 import AppIconContainer from './components/AppIconContainer';
 import ProjectsPage from './components/ProjectsPage';
@@ -9,6 +10,26 @@ type Page = 'home' | 'projects' | 'contacts';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
+
+  // Dynamic background wallpaper logic
+  useEffect(() => {
+    // Example: change wallpaper based on time of day
+    const hour = new Date().getHours();
+    let bgUrl = '';
+    if (hour >= 6 && hour < 12) {
+      bgUrl = 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80'; // Morning
+    } else if (hour >= 12 && hour < 18) {
+      bgUrl = 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80'; // Afternoon
+    } else if (hour >= 18 && hour < 20) {
+      bgUrl = 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=800&q=80'; // Evening
+    } else {
+      bgUrl = 'https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=800&q=80'; // Night
+    }
+    document.body.style.backgroundImage = `url('${bgUrl}')`;
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.backgroundRepeat = 'no-repeat';
+  }, []);
 
   const handleNavigateToProjects = () => {
     setCurrentPage('projects');
@@ -27,38 +48,45 @@ function App() {
       <WeatherInfo />
       <div className="app-icons-grid">
         <AppIconContainer
-          imageUrl="https://logowik.com/content/uploads/images/flutter5786.jpg" 
+          imageUrl="https://logowik.com/content/uploads/images/flutter5786.jpg"
           label="Projects"
-          notificationText="7+"
+          notificationText="20+"
           noBackground={true}
           onClick={handleNavigateToProjects}
         />
         <AppIconContainer
-          imageUrl="https://m.media-amazon.com/images/I/41Wt+LyfovL.png" // Dart icon
-          label="Resume"
-          onClick={() => {
-            const link = document.createElement('a');
-            link.href = '/src/assets/pdf/resume.pdf';
-            link.download = 'resume.pdf';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-          }}
-        />
-        <AppIconContainer
-          imageUrl="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" 
+          imageUrl="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
           label="GitHub"
-          notificationText="99+" // Example notification
+          notificationText="99+"
           onClick={handleNavigateToGitHub}
         />
         <AppIconContainer
-          imageUrl="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" 
+          imageUrl="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
           label="Linkedin"
           notificationText="99+"
           imageWidth="60px"
           imageHeight="60px"
           noBackground={true}
           onClick={() => window.open('https://www.linkedin.com', '_blank', 'noopener,noreferrer')}
+        />
+        <AppIconContainer
+          imageUrl="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"
+          label="Telegram"
+          notificationText="New"
+          noBackground={true}
+          onClick={() => window.open('https://t.me/anexdev', '_blank', 'noopener,noreferrer')}
+        />
+        <AppIconContainer
+          imageUrl="https://pngdownload.io/wp-content/uploads/2023/12/X-Logo-Twitter-Logo-Iconic-Social-Media-Brand-Symbol-PNG-Transparent-Recognizable-Emblem-jpg.webp"
+          label="X (Twitter)"
+          noBackground={true}
+          onClick={() => window.open('https://twitter.com/anexdev', '_blank', 'noopener,noreferrer')}
+        />
+        <AppIconContainer
+          imageUrl="https://cdn-icons-png.flaticon.com/512/5968/5968764.png"
+          label="Facebook"
+          noBackground={true}
+          onClick={() => window.open('https://facebook.com/anexdev', '_blank', 'noopener,noreferrer')}
         />
       </div>
     </>

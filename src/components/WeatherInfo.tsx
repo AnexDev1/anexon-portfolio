@@ -18,7 +18,7 @@ const WeatherInfo: React.FC = () => {
         try {
           const lat = position.coords.latitude;
           const lon = position.coords.longitude;
-          const apiKey = '88fb9f1e9db0aeca4e74df92d5884514';
+          const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
           const url = `https://corsproxy.io/?https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
           const res = await fetch(url);
           if (!res.ok) throw new Error('Failed to fetch weather');

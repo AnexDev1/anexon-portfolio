@@ -152,3 +152,46 @@
     margin: 4px 0;
     color: #ffcc00; /* Example sun color */
   }
+}
+
+/* Mobile optimizations */
+@media (max-width: 430px) {
+  .weather-container {
+    padding: 12px;
+    margin: 10px auto 5px auto;
+    min-height: 70px;
+  }
+  .weather-awesome-header {
+    gap: 12px;
+    margin-bottom: 5px;
+  }
+  .weather-awesome-icon {
+    width: 36px;
+    height: 36px;
+  }
+  .weather-main-content {
+    min-height: 50px;
+  }
+  .weather-left {
+    padding-right: 15px;
+  }
+  .main-icon {
+    font-size: 2.5em;
+  }
+  .current-temp {
+    font-size: 2em;
+  }
+  .temp-range {
+    font-size: 0.8em;
+  }
+  .weather-right {
+    align-items: flex-start;
+  }
+  .city-name {
+    font-size: 1.3em;
+  }
+  .weather-description {
+    font-size: 0.8em;
+    margin-bottom: 10px;
+  }
+}

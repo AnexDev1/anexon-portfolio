@@ -140,20 +140,28 @@ interface ProjectsPageProps {
 
 const ProjectsPage: React.FC<ProjectsPageProps> = ({ onNavigateHome }) => (
   <div className="projects-page-container">
-    {onNavigateHome && (
-      <button onClick={onNavigateHome} className="projects-page-back-button">
-        &larr; Back Home
-      </button>
-    )}
-    <h1 className="projects-page-title">My Projects</h1>
+    <div className="projects-header">
+      {onNavigateHome && (
+        <button onClick={onNavigateHome} className="projects-back-button">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+        </button>
+      )}
+      <h1 className="projects-page-title">Projects</h1>
+    </div>
+    
     <div className="projects-grid">
       {projectsData.map((project) => (
-        <div key={project.id} className="project-item">
-          <div className="project-image-container">
+        <div key={project.id} className="project-card">
+          <div className="project-image-wrapper">
             <img src={project.imageUrl} alt={project.appName} className="project-image" />
+            <div className="project-overlay"></div>
           </div>
-          <p className="project-name">{project.appName}</p>
-          {project.description && <p className="project-description">{project.description}</p>}
+          <div className="project-content">
+            <h3 className="project-name">{project.appName}</h3>
+            {project.description && <p className="project-description">{project.description}</p>}
+          </div>
         </div>
       ))}
     </div>

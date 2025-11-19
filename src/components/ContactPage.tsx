@@ -1,23 +1,50 @@
 import './ContactPage.css';
 
-function ContactPage() {
+interface Contact {
+  id: number;
+  name: string;
+  phone: string;
+  avatar?: string;
+}
+
+const contactsData: Contact[] = [
+  {
+    id: 1,
+    name: "Anwar Nasir",
+    phone: "+251 917 413 622",
+    avatar: "https://avatars.githubusercontent.com/u/your-github-id"
+  },
+];
+
+interface ContactPageProps {
+  onNavigateHome?: () => void;
+}
+
+function ContactPage({ onNavigateHome }: ContactPageProps) {
   return (
     <div className="contact-page">
-      <div className="contact-card">
-        <img
-          src="https://avatars.githubusercontent.com/u/your-github-id"
-          alt="Profile"
-          className="contact-avatar"
-        />
-        <h2>Anwar Nasir</h2>
-        <h4>Software Engineer</h4>
-        <div className="contact-info">
-          <p><strong>Address:</strong> Addis Ababa, Ethiopia</p>
-          <p><strong>Email:</strong> anwarnasir0970@gmail.com</p>
-          <p><strong>Phone:</strong> +251 917 413 622</p>
-          <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">linkedin.com/in/anwar</a></p>
-          <p><strong>GitHub:</strong> <a href="https://github.com/anexdev1" target="_blank" rel="noopener noreferrer">github.com/anexdev1</a></p>
-        </div>
+      <div className="contact-header">
+        {onNavigateHome && (
+          <button onClick={onNavigateHome} className="contact-back-button">
+            &larr; Back
+          </button>
+        )}
+        <h1 className="contact-title">Contacts</h1>
+      </div>
+      <div className="contact-list">
+        {contactsData.map((contact) => (
+          <div key={contact.id} className="contact-item">
+            <img
+              src={contact.avatar || "https://via.placeholder.com/50"}
+              alt={contact.name}
+              className="contact-avatar"
+            />
+            <div className="contact-details">
+              <h3 className="contact-name">{contact.name}</h3>
+              <p className="contact-phone">{contact.phone}</p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

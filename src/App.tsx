@@ -96,7 +96,7 @@ function App() {
     <div className="app">
       {currentPage === 'home' && renderHomePage()}
       {currentPage === 'projects' && <ProjectsPage onNavigateHome={handleNavigateHome} />}
-      {currentPage === 'contacts' && <ContactPage />}
+      {currentPage === 'contacts' && <ContactPage onNavigateHome={handleNavigateHome} />}
       {currentPage === 'home' && (
         <div className="bottom-bar">
           <AppIconContainer
